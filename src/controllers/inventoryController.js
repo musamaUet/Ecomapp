@@ -33,7 +33,7 @@ const inventoryController = {
       });
     } catch (error) {
       console.log("eror ", error);
-      res.status(500).json({ message: error.message });
+      res.status(500).json({ message: error.message, success: false });
     }
   },
   async createInventoryItem(req, res) {
@@ -43,18 +43,18 @@ const inventoryController = {
       // Check if product exists
       const product = await Product.findById(productId);
       if (!product) {
-        return res.status(404).json({ message: "Product not found" });
+        return res
+          .status(404)
+          .json({ message: "Product not found", success: false });
       }
 
       // Check if inventory already exists for this product
       const existingInventory = await Inventory.findOne({ productId });
       if (existingInventory) {
-        return res
-          .status(400)
-          .json({
-            message: "Inventory already exists for this product",
-            success: false,
-          });
+        return res.status(400).json({
+          message: "Inventory already exists for this product",
+          success: false,
+        });
       }
 
       const inventory = new Inventory({
