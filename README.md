@@ -5,34 +5,38 @@ A robust e-commerce backend API built with Node.js, Express, and MongoDB that ha
 ## Features
 
 ### Product Management
+
 - Create, read, update, and delete products
 - Product categorization
 - Stock tracking
 
-
 ### Sales Management
+
 - Record sales transactions
 - Track sales history
 - Handle different sale statuses (completed, refunded, pending)
 - Link sales with products
 
 ### Inventory Management
+
 - Real-time stock tracking
 - Minimum stock level alerts
 
 ## API Endpoints
 
 ### Products
-- `GET /api/products` - Get all products
-- `GET /api/products/:id` - Get single product
-- `POST /api/products` - Create new product
+
+- `GET /api/product` - Get all products
+- `POST /api/product/category` - Get products by cateogry filter
+- `POST /api/product/create` - Create new product
 
 ### Sales
-- `GET /api/sales` - Get all sales
-- `GET /api/sales/:id` - Get single sale
-- `POST /api/sales` - Create new sale
+
+- `GET /api/sale/category?type=${category}` - Get all sales
+- `POST /api/sale` - Create new sale
 
 ### Inventory
+
 - `GET /api/inventory` - Get all inventory items
 - `GET /api/inventory/:id` - Get single inventory item
 - `GET /api/inventory/low-stock` - Get low stock items
@@ -42,6 +46,7 @@ A robust e-commerce backend API built with Node.js, Express, and MongoDB that ha
 ## Data Models
 
 ### Product Schema
+
 ```javascript
 {
     title: String,
@@ -54,6 +59,7 @@ A robust e-commerce backend API built with Node.js, Express, and MongoDB that ha
 ```
 
 ### Sales Schema
+
 ```javascript
 {
     productId: ObjectId,
@@ -66,6 +72,7 @@ A robust e-commerce backend API built with Node.js, Express, and MongoDB that ha
 ```
 
 ### Inventory Schema
+
 ```javascript
 {
     productId: ObjectId,
@@ -86,23 +93,27 @@ A robust e-commerce backend API built with Node.js, Express, and MongoDB that ha
 ## Setup Instructions
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd EcomAPP
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Create a `.env` file in the root directory with the following variables:
+
 ```env
 PORT=5000
 MONGODB_URI=your_mongodb_connection_string
 ```
 
 4. Start the server:
+
 ```bash
 npm start
 ```
@@ -117,11 +128,11 @@ npm start
 ## Error Handling
 
 The API implements comprehensive error handling:
+
 - 400: Bad Request
 - 404: Not Found
 - 500: Internal Server Error
 
-
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details. 
+This project is licensed under the MIT License - see the LICENSE file for details.
